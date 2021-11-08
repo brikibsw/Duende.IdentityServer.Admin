@@ -24,7 +24,6 @@ namespace Skoruba.Duende.IdentityServer.Admin.UnitTests.Services
     public class ApiScopeServiceTests
     {
         private readonly DbContextOptions<IdentityServerConfigurationDbContext> _dbContextOptions;
-        private readonly ConfigurationStoreOptions _storeOptions;
 
         public ApiScopeServiceTests()
         {
@@ -33,8 +32,6 @@ namespace Skoruba.Duende.IdentityServer.Admin.UnitTests.Services
             _dbContextOptions = new DbContextOptionsBuilder<IdentityServerConfigurationDbContext>()
                 .UseInMemoryDatabase(databaseName)
                 .Options;
-
-            _storeOptions = new ConfigurationStoreOptions();
 		}
 
 		private IApiScopeRepository GetApiScopeRepository(IdentityServerConfigurationDbContext context)
@@ -72,7 +69,7 @@ namespace Skoruba.Duende.IdentityServer.Admin.UnitTests.Services
 		[Fact]
 		public async Task AddApiScopeAsync()
 		{
-			using (var context = new IdentityServerConfigurationDbContext(_dbContextOptions, _storeOptions))
+			using (var context = new IdentityServerConfigurationDbContext(_dbContextOptions))
 			{
 				var apiScopeService = GetApiScopeService(context);
 
@@ -93,14 +90,14 @@ namespace Skoruba.Duende.IdentityServer.Admin.UnitTests.Services
 				var newApiScope = await apiScopeService.GetApiScopeAsync(apiScopesDto.Id);
 
 				//Assert
-				newApiScope.ShouldBeEquivalentTo(apiScopesDto);
+				newApiScope.Should().BeEquivalentTo(apiScopesDto);
 			}
 		}
 
 		[Fact]
 		public async Task GetApiScopeAsync()
 		{
-			using (var context = new IdentityServerConfigurationDbContext(_dbContextOptions, _storeOptions))
+			using (var context = new IdentityServerConfigurationDbContext(_dbContextOptions))
 			{
 				var apiScopeService = GetApiScopeService(context);
 
@@ -121,14 +118,14 @@ namespace Skoruba.Duende.IdentityServer.Admin.UnitTests.Services
 				var newApiScope = await apiScopeService.GetApiScopeAsync(apiScopesDto.Id);
 
 				//Assert
-				newApiScope.ShouldBeEquivalentTo(apiScopesDto);
+				newApiScope.Should().BeEquivalentTo(apiScopesDto);
 			}
 		}
 
 		[Fact]
 		public async Task UpdateApiScopeAsync()
 		{
-			using (var context = new IdentityServerConfigurationDbContext(_dbContextOptions, _storeOptions))
+			using (var context = new IdentityServerConfigurationDbContext(_dbContextOptions))
 			{
 				var apiScopeService = GetApiScopeService(context);
 
@@ -149,7 +146,7 @@ namespace Skoruba.Duende.IdentityServer.Admin.UnitTests.Services
 				var newApiScope = await apiScopeService.GetApiScopeAsync(apiScopesDto.Id);
 
 				//Assert
-				newApiScope.ShouldBeEquivalentTo(apiScopesDto);
+				newApiScope.Should().BeEquivalentTo(apiScopesDto);
 
 				//Detached the added item
 				context.Entry(apiScope).State = EntityState.Detached;
@@ -162,14 +159,14 @@ namespace Skoruba.Duende.IdentityServer.Admin.UnitTests.Services
 				var updatedApiScopeDto = await apiScopeService.GetApiScopeAsync(apiScopesDto.Id);
 
 				//Assert updated api scope
-				updatedApiScope.ShouldBeEquivalentTo(updatedApiScopeDto);
+				updatedApiScope.Should().BeEquivalentTo(updatedApiScopeDto);
 			}
 		}
 
 		[Fact]
 		public async Task DeleteApiScopeAsync()
 		{
-			using (var context = new IdentityServerConfigurationDbContext(_dbContextOptions, _storeOptions))
+			using (var context = new IdentityServerConfigurationDbContext(_dbContextOptions))
 			{
 				var apiScopeService = GetApiScopeService(context);
 
@@ -190,7 +187,7 @@ namespace Skoruba.Duende.IdentityServer.Admin.UnitTests.Services
 				var newApiScope = await apiScopeService.GetApiScopeAsync(apiScopeDto.Id);
 
 				//Assert
-				newApiScope.ShouldBeEquivalentTo(apiScopeDto);
+				newApiScope.Should().BeEquivalentTo(apiScopeDto);
 
 				//Delete it
 				await apiScopeService.DeleteApiScopeAsync(newApiScope);

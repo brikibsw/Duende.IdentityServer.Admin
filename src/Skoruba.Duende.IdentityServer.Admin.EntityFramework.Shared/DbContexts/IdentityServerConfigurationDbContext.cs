@@ -3,7 +3,6 @@
 
 using Duende.IdentityServer.EntityFramework.DbContexts;
 using Duende.IdentityServer.EntityFramework.Entities;
-using Duende.IdentityServer.EntityFramework.Options;
 using Microsoft.EntityFrameworkCore;
 using Skoruba.Duende.IdentityServer.Admin.EntityFramework.Interfaces;
 
@@ -11,9 +10,10 @@ namespace Skoruba.Duende.IdentityServer.Admin.EntityFramework.Shared.DbContexts
 {
     public class IdentityServerConfigurationDbContext : ConfigurationDbContext<IdentityServerConfigurationDbContext>, IAdminConfigurationDbContext
     {
-        public IdentityServerConfigurationDbContext(DbContextOptions<IdentityServerConfigurationDbContext> options, ConfigurationStoreOptions storeOptions)
-            : base(options, storeOptions)
+        public IdentityServerConfigurationDbContext(DbContextOptions<IdentityServerConfigurationDbContext> options)
+            : base(options)
         {
+
         }
 
         public DbSet<ApiResourceProperty> ApiResourceProperties { get; set; }

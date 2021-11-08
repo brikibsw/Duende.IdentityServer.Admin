@@ -11,7 +11,7 @@ namespace Skoruba.Duende.IdentityServer.Admin.EntityFramework.Shared.DbContexts
     public class IdentityServerPersistedGrantDbContext : PersistedGrantDbContext<IdentityServerPersistedGrantDbContext>, IAdminPersistedGrantDbContext
     {
         public IdentityServerPersistedGrantDbContext(DbContextOptions<IdentityServerPersistedGrantDbContext> options, OperationalStoreOptions storeOptions)
-            : base(options, storeOptions)
+            : base(options)
         {
         }
     }
