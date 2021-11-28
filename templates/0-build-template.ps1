@@ -1,4 +1,4 @@
-param([string] $packagesVersions, [string]$gitBranchName = 'main')
+param([string] $packagesVersions, [string]$gitBranchName = 'net6')
 
 # This script contains following steps:
 # - Download latest version of Skoruba.Duende.IdentityServer.Admin from git repository

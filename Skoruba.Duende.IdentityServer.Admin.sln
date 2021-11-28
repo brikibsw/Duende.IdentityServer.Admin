@@ -61,11 +61,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Skoruba.Duende.IdentityServ
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "logging", "logging", "{16A7347E-12F6-40F7-B062-CD3AD6277D17}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Skoruba.AuditLogging", "..\AuditLogging\src\Skoruba.AuditLogging\Skoruba.AuditLogging.csproj", "{170BAB92-D76C-4713-BC52-387B9E5A2798}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Skoruba.AuditLogging", "src\AuditLogging\Skoruba.AuditLogging\Skoruba.AuditLogging.csproj", "{170BAB92-D76C-4713-BC52-387B9E5A2798}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Skoruba.AuditLogging.EntityFramework", "..\AuditLogging\src\Skoruba.AuditLogging.EntityFramework\Skoruba.AuditLogging.EntityFramework.csproj", "{AB94AC2D-8EFD-48F0-802A-1504DD74AE8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Skoruba.AuditLogging.EntityFramework", "src\AuditLogging\Skoruba.AuditLogging.EntityFramework\Skoruba.AuditLogging.EntityFramework.csproj", "{AB94AC2D-8EFD-48F0-802A-1504DD74AE8E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Skoruba.AuditLogging.Host", "..\AuditLogging\src\Skoruba.AuditLogging.Host\Skoruba.AuditLogging.Host.csproj", "{E3C80975-2173-458E-957F-2537758C93AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Skoruba.AuditLogging.Host", "src\AuditLogging\Skoruba.AuditLogging.Host\Skoruba.AuditLogging.Host.csproj", "{E3C80975-2173-458E-957F-2537758C93AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

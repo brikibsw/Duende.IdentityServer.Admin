@@ -16,7 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\..\AuditLogging\src\Skoruba.AuditLogging.EntityFramework\Skoruba.AuditLogging.EntityFramework.csproj" />
+        <ProjectReference Include="..\AuditLogging\Skoruba.AuditLogging.EntityFramework\Skoruba.AuditLogging.EntityFramework.csproj" />
         <ProjectReference Include="..\Skoruba.Duende.IdentityServer.Admin.EntityFramework.Extensions\Skoruba.Duende.IdentityServer.Admin.EntityFramework.Extensions.csproj" />
     </ItemGroup>
 </Project>
