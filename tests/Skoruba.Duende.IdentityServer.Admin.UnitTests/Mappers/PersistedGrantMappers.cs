@@ -25,7 +25,7 @@ namespace Skoruba.Duende.IdentityServer.Admin.UnitTests.Mappers
             //Asert
             persistedGrantDto.Should().NotBeNull();
 
-            persistedGrant.Should().BeEquivalentTo(persistedGrantDto);
+            persistedGrantDto.Should().BeEquivalentTo(persistedGrant);
         }
     }
 }

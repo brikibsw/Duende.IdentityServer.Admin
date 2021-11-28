@@ -2,11 +2,13 @@
 // Licensed under the Apache License, Version 2.0.
 
 using System.Linq;
+
 using FluentAssertions;
 
 using Skoruba.Duende.IdentityServer.Admin.BusinessLogic.Mappers;
 using Skoruba.Duende.IdentityServer.Admin.BusinessLogic.Mappers.Converters;
 using Skoruba.Duende.IdentityServer.Admin.UnitTests.Mocks;
+
 using Xunit;
 
 namespace Skoruba.Duende.IdentityServer.Admin.UnitTests.Mappers
@@ -25,15 +27,18 @@ namespace Skoruba.Duende.IdentityServer.Admin.UnitTests.Mappers
             //Asert
             clientDto.Should().NotBeNull();
 
-            client.Should().BeEquivalentTo(clientDto, options =>
+            clientDto.Should().BeEquivalentTo(client, options =>
                 options.Excluding(o => o.AllowedCorsOrigins)
                        .Excluding(o => o.RedirectUris)
                        .Excluding(o => o.PostLogoutRedirectUris)
                        .Excluding(o => o.AllowedGrantTypes)
                        .Excluding(o => o.AllowedScopes)
-					   //.Excluding(o => o.Created) // TODO: fix
+                       .Excluding(o => o.Created)
                        .Excluding(o => o.AllowedIdentityTokenSigningAlgorithms)
-                       .Excluding(o => o.IdentityProviderRestrictions));
+                       .Excluding(o => o.IdentityProviderRestrictions)
+                       .Excluding(o => o.ClientSecrets)
+                       .Excluding(o => o.Claims)
+                       .Excluding(o => o.Properties));
 
             //Assert collection
             client.AllowedCorsOrigins.Select(x => x.Origin).Should().BeEquivalentTo(clientDto.AllowedCorsOrigins);
@@ -57,15 +62,18 @@ namespace Skoruba.Duende.IdentityServer.Admin.UnitTests.Mappers
 
             client.Should().NotBeNull();
 
-            client.Should().BeEquivalentTo(clientDto, options =>
+            clientDto.Should().BeEquivalentTo(client, options =>
                 options.Excluding(o => o.AllowedCorsOrigins)
                     .Excluding(o => o.RedirectUris)
                     .Excluding(o => o.PostLogoutRedirectUris)
                     .Excluding(o => o.AllowedGrantTypes)
                     .Excluding(o => o.AllowedScopes)
                     .Excluding(o => o.AllowedIdentityTokenSigningAlgorithms)
-                    //.Excluding(o => o.Created)
-					.Excluding(o => o.IdentityProviderRestrictions));
+                    .Excluding(o => o.Created)
+                    .Excluding(o => o.IdentityProviderRestrictions)
+                    .Excluding(o => o.ClientSecrets)
+                    .Excluding(o => o.Claims)
+                    .Excluding(o => o.Properties));
 
             //Assert collection
             client.AllowedCorsOrigins.Select(x => x.Origin).Should().BeEquivalentTo(clientDto.AllowedCorsOrigins);
@@ -88,7 +96,9 @@ namespace Skoruba.Duende.IdentityServer.Admin.UnitTests.Mappers
             //Assert
             clientClaimsDto.Should().NotBeNull();
 
-            clientClaim.Should().BeEquivalentTo(clientClaimsDto);
+            clientClaimsDto.Should().BeEquivalentTo(clientClaim, options =>
+                options.Excluding(o => o.Id)
+                    .Excluding(o => o.Client));
         }
 
         [Fact]
@@ -101,7 +111,9 @@ namespace Skoruba.Duende.IdentityServer.Admin.UnitTests.Mappers
             //Assert
             clientClaim.Should().NotBeNull();
 
-            clientClaim.Should().BeEquivalentTo(clientClaimDto);
+            clientClaimDto.Should().BeEquivalentTo(clientClaim, options =>
+                options.Excluding(o => o.Id)
+                    .Excluding(o => o.Client));
         }
 
         [Fact]
@@ -114,7 +126,10 @@ namespace Skoruba.Duende.IdentityServer.Admin.UnitTests.Mappers
             //Assert
             clientSecretsDto.Should().NotBeNull();
 
-            clientSecret.Should().BeEquivalentTo(clientSecretsDto);
+            clientSecretsDto.Should().BeEquivalentTo(clientSecret, options =>
+                options.Excluding(o => o.Id)
+                    .Excluding(o => o.Created)
+                    .Excluding(o => o.Client));
         }
 
         [Fact]
@@ -127,7 +142,10 @@ namespace Skoruba.Duende.IdentityServer.Admin.UnitTests.Mappers
             //Assert
             clientSecret.Should().NotBeNull();
 
-            clientSecret.Should().BeEquivalentTo(clientSecretsDto);
+            clientSecretsDto.Should().BeEquivalentTo(clientSecret, options =>
+                options.Excluding(o => o.Id)
+                    .Excluding(o => o.Created)
+                    .Excluding(o => o.Client));
         }
 
         [Fact]
@@ -140,7 +158,9 @@ namespace Skoruba.Duende.IdentityServer.Admin.UnitTests.Mappers
             //Assert
             clientPropertiesDto.Should().NotBeNull();
 
-            clientProperty.Should().BeEquivalentTo(clientPropertiesDto);
+            clientPropertiesDto.Should().BeEquivalentTo(clientProperty, options =>
+                options.Excluding(o => o.Id)
+                    .Excluding(o => o.Client));
         }
 
         [Fact]
@@ -153,7 +173,9 @@ namespace Skoruba.Duende.IdentityServer.Admin.UnitTests.Mappers
             //Assert
             clientProperty.Should().NotBeNull();
 
-            clientProperty.Should().BeEquivalentTo(clientPropertiesDto);
+            clientPropertiesDto.Should().BeEquivalentTo(clientProperty, options =>
+                options.Excluding(o => o.Id)
+                    .Excluding(o => o.Client));
         }
     }
 }
