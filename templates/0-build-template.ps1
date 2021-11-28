@@ -1,11 +1,11 @@
-param([string] $packagesVersions, [string]$gitBranchName = 'dev')
+param([string] $packagesVersions, [string]$gitBranchName = 'main')
 
 # This script contains following steps:
 # - Download latest version of Skoruba.Duende.IdentityServer.Admin from git repository
 # - Use folders src and tests for project template
 # - Create db migrations for seed data
 
-$gitProject = "https://github.com/skoruba/Duende.IdentityServer.Admin"
+$gitProject = "https://github.com/brikibsw/Duende.IdentityServer.Admin"
 $gitProjectFolder = "Skoruba.Duende.IdentityServer.Admin"
 $templateSrc = "template-build/content/src"
 $templateRoot = "template-build/content"
